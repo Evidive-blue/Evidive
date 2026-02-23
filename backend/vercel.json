@@ -1,16 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
-  "functions": {
-    "api/handler.rs": {
-      "runtime": "@vercel-community/rust@0.6.0",
-      "maxDuration": 30
-    }
-  },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/api/handler"
+      "src": "/(.*)",
+      "dest": "/api/handler"
     }
   ]
 }

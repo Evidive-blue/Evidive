@@ -1,0 +1,17 @@
+# Rust build artifacts — very large, never needed by Vercel
+target/
+
+# Local env
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
