@@ -17,11 +17,14 @@ let _client: SupabaseClient | null = null;
 function getClient(): SupabaseClient {
   if (_client) return _client;
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-  const key =
+  // .trim() is critical — PowerShell/CLI env injection can add trailing newlines
+  // which make the URL invalid and silently break the Supabase client.
+  const url = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? "").trim();
+  const key = (
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-    "";
+    ""
+  ).trim();
 
   if (!url || !key) {
     /**
